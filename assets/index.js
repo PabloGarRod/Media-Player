@@ -1,34 +1,7 @@
-function MediaPlayer(config){
-    this.media = config.element 
-    /*con esta linea declaramos que el valor de media es el atributo que se le pasa a MediaPlayer al instanciarlo
-    En este caso el atributo que se le pasa al crear la instancia player es video, por lo que en player 
-    this.media siempre será igual que video, pues es el argumento que se le ha pasado*/
-}
+import MediaPlayer from './MediaPlayer.js';
 
-
-MediaPlayer.prototype.play = function() {   //con esto definimos la funcion play de la clase MediaPlayer
-    this.media.play();
-  } 
-
-MediaPlayer.prototype.pause = function(){ //igual que la anterior función pero para la funcion pause
-    this.media.pause();
-  }
-
-  
-  /* La siguiente funcion comprueba si el video está pausado
-  a través de la propiedad paused, en funcion de si devuelve true o false
-  ejecutará play o pause.*/
-  
-  MediaPlayer.prototype.togglePlay = function(){
-      if(this.media.paused){
-          this.play();
-        }else{
-            this.pause();
-        }
-    }        
-    
-    
 const video = document.querySelector("video");
-const button = document.querySelector("button");
 const player = new MediaPlayer({element:video});  //con esta lina creamos una nueva instancia de MediaPlayer
+
+const button = document.querySelector("button");
 button.onclick = () => player.togglePlay();
