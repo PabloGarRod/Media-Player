@@ -114,10 +114,23 @@
             }
 
             const zelda = new Hero('Zelda');
-            zelda.saludar();
+            //zelda.saludar();
 
             const link = new Hero('Link');
-            link.saludar();
+            //link.saludar();
+
+            //propiedades de la instancia 
+            console.log('Name:',zelda.name);
+
+            //propiedades de la clase
+            console.log('Saludar:', zelda.saludar);
+
+            //propiedades heredadas
+            console.log('ToString:', zelda.toString);
+
+            //hasOwnProperty
+            console.log('zelda.hasOwnProperty("saludar"):',zelda.hasOwnProperty('saludar'));
+
         </script>
     </body>
 </html>
