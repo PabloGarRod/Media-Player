@@ -1,29 +1,17 @@
 class MediaPlayer {
+  media: HTMLMediaElement;
+  plugins: Array<any>;
   constructor(config) {
     this.media = config.element;
     /*con esta linea declaramos que el valor de media es el atributo que se le pasa a MediaPlayer al instanciarlo
     En este caso el atributo que se le pasa al crear la instancia player es video, por lo que en player
     this.media siempre será igual que video, pues es el argumento que se le ha pasado*/
     this.plugins = config.plugins || [];
-    this._initPlugins();
+    this.initPlugins();
   }
-  _initPlugins() {
-    const player = {
-      play: () => this.play(),
-      pause: () => this.pause(),
-      media: this.media,
-      get muted() {
-        return this.media.muted;
-      },
-
-      set muted(value) {
-        this.media.muted = value;
-      },
-    };
-
-
+  private initPlugins() {
     this.plugins.forEach(plugin => {
-      plugin.run(player);
+      plugin.run(this);
     });
   }
   play() {
